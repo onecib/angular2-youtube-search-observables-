@@ -1,0 +1,50 @@
+<nav>
+    <a [routerLink]=" ['./'] "
+      routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+      Index
+    </a>
+    <a [routerLink]=" ['./home'] "
+      routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+      Home
+    </a>
+    <a [routerLink]=" ['./detail'] "
+      routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+      Detail
+    </a>
+    <a [routerLink]=" ['./barrel'] "
+      routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+      Barrel
+    </a>
+    <a [routerLink]=" ['./about'] "
+      routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+      About
+    </a>
+  </nav>
+
+    <h3>Angular 2 Observables Demo</h3>
+    <form [formGroup]="searchForm">
+        <label for="search">Search Youtube</label>
+        <input formControlName="search" id="search"/>
+    </form>
+
+    <div *ngFor="let result of results$ |async">
+        <a href="https://www.youtube.com/watch?v={{result.id.videoId}}" target="_blank">
+            <h3>{{result.snippet.title}}</h3>
+        </a>
+        <p>{{result.snippet.description}}</p>
+        <img [src]="result.snippet.thumbnails.default.url" style="width:100%; max-width:250px;">
+    </div>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
+
+  <footer>
+    <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
+    <div>
+      <a [href]="url">
+        <img [src]="angularclassLogo" width="25%">
+      </a>
+    </div>
+  </footer>
